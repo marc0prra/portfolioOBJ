@@ -1,0 +1,15 @@
+{
+    "name": "perei/portfolio-obj",
+    "autoload": {
+        "psr-4": {
+            "Perei\\PortfolioObj\\": "src/Model/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marco Pereira",
+            "email": "pereira.marco2006@gmail.com"
+        }
+    ],
+    "require": {}
+}
