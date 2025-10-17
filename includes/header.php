@@ -14,7 +14,7 @@
 </head>
 <header>
     <div class="row gap5">
-        <p>porfolio</p>
+        <p>Portfolio</p>
         <a href="/php/portfolioOBJ/public/home.php">Accueil</a>
         <a href="/php/portfolioOBJ/public/about.php">A propos</a>
         <a href="/php/portfolioOBJ/public/myProjects.php">Projets</a>

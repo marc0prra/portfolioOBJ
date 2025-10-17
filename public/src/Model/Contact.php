@@ -2,13 +2,13 @@
 
 namespace Perei\PortfolioObj\Model;
 
-class Contact
+class Contact extends Database
 {
     private ?int $id;
-    private string $title;
-    private string $firstname;
-    private string $phone;
-    private string $email;
+    public string $title;
+    public string $firstname;
+    public string $phone;
+    public string $email;
     private string $message;
 
     public function __construct(
@@ -111,7 +111,25 @@ class Contact
             error_log('Erreur lors de la suppression du contact : ' . $e->getMessage());
         }
     }
+    public function editContact(Contact $contact): void
+    {
+        try {
+            $stmt = $this->connexion->prepare(
+                'UPDATE contact 
+             SET title = :title, firstname = :firstname, phone = :phone, email = :email, message = :message
+             WHERE id = :id'
+            );
 
+            $stmt->bindValue(':title', $contact->getTitle());
+            $stmt->bindValue(':firstname', $contact->getFirstname());
+            $stmt->bindValue(':phone', $contact->getPhone());
+            $stmt->bindValue(':email', $contact->getEmail());
+            $stmt->bindValue(':message', $contact->getMessage());
+            $stmt->bindValue(':id', $contact->getId(), \PDO::PARAM_INT);
 
-
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            error_log('Erreur lors de la modification du contact : ' . $e->getMessage());
+        }
+    }
 }
